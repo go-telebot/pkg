@@ -11,7 +11,7 @@ import (
 func (m *Monitor) Middleware() tele.MiddlewareFunc {
 	return func(next tele.HandlerFunc) tele.HandlerFunc {
 		return func(c tele.Context) error {
-			update, ok := newUpdate(c)
+			update, ok := NewUpdate(c)
 			if ok {
 				m.bus <- update
 			}
@@ -27,7 +27,7 @@ func (m *Monitor) OnError() func(error, tele.Context) {
 	}
 }
 
-func newUpdate(c tele.Context) (Update, bool) {
+func NewUpdate(c tele.Context) (Update, bool) {
 	utype := updateType(c)
 	if utype == "" {
 		return Update{}, false
