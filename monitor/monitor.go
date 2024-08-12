@@ -41,13 +41,13 @@ type (
 	// Stores the most important and representative data possible.
 	Update struct {
 		// Date is a receiving date of the update in YYYYMMDD format.
-		Date time.Time
+		Date time.Time `json:"date"`
 
 		// Time is a receiving full time of the update.
-		Time time.Time
+		Time time.Time `json:"time"`
 
 		// ID is the update's unique identifier.
-		ID uint
+		ID uint `json:"id"`
 
 		// Type is the update's type.
 		//
@@ -60,16 +60,16 @@ type (
 		//		pre_checkout_query
 		//		chat_member
 		//
-		Type string
+		Type string `json:"type"`
 
 		// UserID is the update sender's ID.
-		UserID int64
+		UserID int64 `json:"user_id"`
 
 		// ChatID is an ID of the conversation the update belongs to.
-		ChatID int64
+		ChatID int64 `json:"chat_id"`
 
 		// MessageID is a message ID the update relates to.
-		MessageID string
+		MessageID string `json:"message_id"`
 
 		// Text is a textual payload of the update.
 		//
@@ -81,7 +81,7 @@ type (
 		//		shipping_query      payload
 		//		pre_checkout_query  payload
 		//
-		Text string
+		Text string `json:"text"`
 
 		// Media is a message's media type.
 		//
@@ -101,22 +101,22 @@ type (
 		//		venue
 		//		location
 		//
-		Media string // message type only
+		Media string `json:"media,omitempty"` // message type only
 
 		// IsInline shows whether a message the update relates to is inline.
-		IsInline bool
+		IsInline bool `json:"is_inline,omitempty"`
 
 		// IsForwarded shows whether the message is forwarded.
-		IsForwarded bool // message type only
+		IsForwarded bool `json:"is_forwarded,omitempty"` // message type only
 
 		// IsReply shows whether the message is replied to another message.
-		IsReply bool // message type only
+		IsReply bool `json:"is_reply,omitempty"` // message type only
 
 		// WasEdited shows whether the message was sent or edited.
-		WasEdited bool // message type only
+		WasEdited bool `json:"was_edited,omitempty"` // message type only
 
 		// ResultID is an ID for the inline result that was chosen.
-		ResultID string // inline_Result type only
+		ResultID string `json:"result_id,omitempty"` // inline_Result type only
 	}
 
 	// Record represents a single log record, associated with the update ID.
